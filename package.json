@@ -1,5 +1,5 @@
 {
-  "name": "gulp-css-url-adjuster",
+  "name": "gulp-ex-css-url-adjuster",
   "version": "0.2.3",
   "description": "Adjust urls inside css",
   "main": "index.js",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/casualrelaxation/gulp-css-url-adjuster.git"
+    "url": "git@github.com:xiaohu-developer/gulp-ex-css-url-adjuster.git"
   },
   "keywords": [
     "gulpplugin",
@@ -28,7 +28,7 @@
     "url",
     "image"
   ],
-  "author": "Trent <casualrelaxation@gmail.com>",
+  "author": "Trent <casualrelaxation@gmail.com>; BigMurry <hhdiao@siom.ac.cn>",
   "license": "MIT",
-  "homepage": "https://github.com/casualrelaxation/gulp-css-url-adjuster"
+  "homepage": "https://github.com/xiaohu-developer/gulp-ex-css-url-adjuster"
 }

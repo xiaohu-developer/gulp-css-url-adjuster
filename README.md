@@ -1,14 +1,52 @@
-gulp-css-url-adjuster
+gulp-ex-css-url-adjuster
 =====================
 
-## Please consider using gulp-rework
-
-https://github.com/sindresorhus/gulp-rework
-
-https://github.com/trentearl/gulp-css-url-adjuster/issues/20#issuecomment-109732884
-
-
 ---
+What does this fork change
+- add support for append file md5
+- prepend differently for relative path and absolute path
+
+For example:
+
+```css
+/* test.css */
+.cool-background {
+  background-image: url('coolImage.jpg');
+  background-image: url('/coolImage.jpg');
+  background-image: url('data:image/jpg;base64,/9j/ke4uvs');
+  background-image: url('http://img.cdn.com/coolImage.jpg');
+}
+```
+
+```js
+/* gulpfile.js */
+const gulp = require('gulp');
+const urlAdjuster = require('gulp-ex-css-url-adjuster');
+
+gulp.task('fixCssUrl', function () {
+  return gulp.src('test.css')
+    .pipe(urlAdjuster({
+      prepend: '/absolute/only',// this will only affect absolute url
+      prependRelative: 'relative/only', // this will only affect the relative url
+      append: '?@MD5&fallback',// if the file is find, then calculate the md5 as the appending tag; if the file cannot resolve, then use the `fallback` as the appending tag
+      root: 'test'// for absolute path use `__dirname + root` to find the file, when calculate the md5
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
+```
+```css
+/* result dist/test.css */
+
+.cool-background {
+  background-image: url('relative/only/coolImage.jpg?<md5 code of this image file>');
+  background-image: url('/absolute/only/coolImage.jpg?<md5 code of this image file>');
+  background-image: url('data:image/jpg;base64,/9j/ke4uvs');
+  background-image: url('http://img.cdn.com/coolImage.jpg');
+}
+```
+---
+** Below is the original READEME file **
 
 This package allows gulp to change css urls
 
