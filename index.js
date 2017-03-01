@@ -3,6 +3,7 @@ var reworkUrl = require('rework-plugin-url');
 var through = require('through2');
 var path = require('path');
 var md5File = require('md5-file');
+var __root = require('app-root-dir').get();
 
 function partition (tag) {
   var ret = typeof tag === 'string' && tag.match(/^\?@(MD5)(?:&(.*))?$/);
@@ -14,8 +15,8 @@ module.exports = function (options) {
   var prepend = options.prepend;
   var replace = options.replace;
   var root = options.root
-    ? path.join(__dirname, options.root)
-    : __dirname;
+    ? path.join(__root, options.root)
+    : __root;
   var prependRelative = options.prependRelative;
   var append = partition(options.append);
 
@@ -33,7 +34,7 @@ module.exports = function (options) {
             newUrl = path.join(prependRelative, newUrl);
           }
           // add tag
-          var dir = file.path ? path.dirname(file.path) : __dirname;
+          var dir = file.path ? path.dirname(file.path) : __root;
           var tag = append.fallback;
           if (append.type === 'MD5') {
             var filePath = url.charAt(0) === '/'

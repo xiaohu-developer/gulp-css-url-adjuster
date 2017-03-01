@@ -7,7 +7,7 @@ gulp.task('default', function () {
     .pipe(adjuster({
       prepend: '/addd/good',
       prependRelative: 'test',
-      append: '?@MD5&fallback',
+      append: '?@MD5',
       root: 'test'
     }))
     .pipe(rename(function (path) {
