@@ -20,7 +20,7 @@ module.exports = function (options) {
   var append = partition(options.append);
 
   function prependUrls (file) {
-    return rework(file.contents.toString())
+    return rework(file.contents.toString(), {source: file.path})
       .use(reworkUrl(function (url) {
         if (url.match(/^(?:data:|http:|https:|ftp:)/)) {
           return url;
