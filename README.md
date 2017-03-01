@@ -1,5 +1,6 @@
 gulp-ex-css-url-adjuster
 =====================
+This package is forked from [gulp-css-url-adjuster](https://github.com/trentearl/gulp-css-url-adjuster)
 
 ---
 What does this fork change
