@@ -2,6 +2,8 @@ gulp-ex-css-url-adjuster
 =====================
 This package is forked from [gulp-css-url-adjuster](https://github.com/trentearl/gulp-css-url-adjuster)
 
+[![NPM](https://nodei.co/npm/gulp-ex-css-url-adjuster.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/gulp-ex-css-url-adjuster/)
+
 ---
 What does this fork change
 - add support for append file md5
