@@ -27,10 +27,20 @@ const urlAdjuster = require('gulp-ex-css-url-adjuster');
 gulp.task('fixCssUrl', function () {
   return gulp.src('test.css')
     .pipe(urlAdjuster({
-      prepend: '/absolute/only',// this will only affect absolute url
-      prependRelative: 'relative/only', // this will only affect the relative url
-      append: '?@MD5&fallback',// if the file can be found, then calculate the md5 as the appending tag; if the file cannot be found, then use the `fallback` as the appending tag
-      root: 'test'// for absolute path use `<app root path> + root` to find the file, when calculate the md5
+      /* this will only be appended after absolute url */
+      prepend: '/absolute/only',
+
+      /* this will only be appended after the relative url */
+      prependRelative: 'relative/only',
+
+      /**
+       * if the file can be found, then calculate the md5 as the appending tag;
+       * if the file cannot be found, then use the `fallback` as the appending tag
+       */
+      append: '?@MD5&fallback',
+
+      /* for absolute path use `<app root path> + root` to find the file, when calculate the md5 code */
+      root: 'test'
     }))
     .pipe(gulp.dest('dist'));
 });
