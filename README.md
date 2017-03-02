@@ -16,6 +16,7 @@ For example:
 .cool-background {
   background-image: url('coolImage.jpg');
   background-image: url('/coolImage.jpg');
+  background-image: url('/coolImage.jpg?a=1&b=2#tag1');
   background-image: url('data:image/jpg;base64,/9j/ke4uvs');
   background-image: url('http://img.cdn.com/coolImage.jpg');
 }
@@ -54,6 +55,7 @@ gulp.task('fixCssUrl', function () {
 .cool-background {
   background-image: url('relative/only/coolImage.jpg?<md5 code of this image file or the fallback string>');
   background-image: url('/absolute/only/coolImage.jpg?<md5 code of this image file or the fallback string>');
+  background-image: url('/coolImage.jpg?a=1&b=2&<md5 code of this image file or the fallback string>#tag1');
   background-image: url('data:image/jpg;base64,/9j/ke4uvs');
   background-image: url('http://img.cdn.com/coolImage.jpg');
 }

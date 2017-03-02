@@ -1,9 +1,9 @@
 div {
-  background-image: url('pizza.jpg');
+  background-image: url('pizza.jpg?a=1&b=2#tag=2');
 }
 
 div {
-  background-image: url("/absolute.jpg");
+  background-image: url("/absolute.jpg#hash-tag");
 }
 
 div {

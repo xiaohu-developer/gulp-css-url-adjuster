@@ -4,6 +4,7 @@ var through = require('through2');
 var path = require('path');
 var md5File = require('md5-file');
 var __root = require('app-root-dir').get();
+var urlParser = require('url');
 
 function partition (tag) {
   var ret = typeof tag === 'string' && tag.match(/^\?@(MD5)(?:&(.*))?$/);
@@ -26,7 +27,8 @@ module.exports = function (options) {
         if (url.match(/^(?:data:|http:|https:|ftp:)/)) {
           return url;
         } else {
-          var newUrl = url;
+          var urlPieces = urlParser.parse(url);
+          var newUrl = urlPieces.pathname;
           // prepend
           if (prepend && url.charAt(0) === '/') { // absolute path
             newUrl = path.join(prepend, newUrl);
@@ -38,8 +40,8 @@ module.exports = function (options) {
           var tag = append.fallback;
           if (append.type === 'MD5') {
             var filePath = url.charAt(0) === '/'
-              ? path.join(root, url)
-              : path.resolve(dir, url);
+              ? path.join(root, urlPieces.pathname)
+              : path.resolve(dir, urlPieces.pathname);
             try {
               tag = md5File.sync(filePath);
             } catch (e) {}
@@ -48,8 +50,12 @@ module.exports = function (options) {
             if (typeof tag === 'function') {
               newUrl = tag(url);
             } else {
-              tag = ('?' + tag).replace(/^\?\?/, '?');
-              newUrl = newUrl + tag;
+              tag = tag.replace(/^\?+/, '');
+              var search = urlPieces.search
+                ? urlPieces.search + '&' + tag
+                : '?' + tag;
+              var hashtag = urlPieces.hash || '';
+              newUrl += search + hashtag;
             }
           }
           // replace url
