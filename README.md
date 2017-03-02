@@ -29,8 +29,8 @@ gulp.task('fixCssUrl', function () {
     .pipe(urlAdjuster({
       prepend: '/absolute/only',// this will only affect absolute url
       prependRelative: 'relative/only', // this will only affect the relative url
-      append: '?@MD5&fallback',// if the file is find, then calculate the md5 as the appending tag; if the file cannot resolve, then use the `fallback` as the appending tag
-      root: 'test'// for absolute path use `__dirname + root` to find the file, when calculate the md5
+      append: '?@MD5&fallback',// if the file can be found, then calculate the md5 as the appending tag; if the file cannot be found, then use the `fallback` as the appending tag
+      root: 'test'// for absolute path use `<app root path> + root` to find the file, when calculate the md5
     }))
     .pipe(gulp.dest('dist'));
 });
@@ -40,14 +40,14 @@ gulp.task('fixCssUrl', function () {
 /* result dist/test.css */
 
 .cool-background {
-  background-image: url('relative/only/coolImage.jpg?<md5 code of this image file>');
-  background-image: url('/absolute/only/coolImage.jpg?<md5 code of this image file>');
+  background-image: url('relative/only/coolImage.jpg?<md5 code of this image file or the fallback string>');
+  background-image: url('/absolute/only/coolImage.jpg?<md5 code of this image file or the fallback string>');
   background-image: url('data:image/jpg;base64,/9j/ke4uvs');
   background-image: url('http://img.cdn.com/coolImage.jpg');
 }
 ```
 ---
-** Below is the original READEME file **
+**Below is the original READEME file**
 
 This package allows gulp to change css urls
 
