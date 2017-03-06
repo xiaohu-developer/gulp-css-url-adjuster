@@ -7,12 +7,11 @@
     "test": "gulp --gulpfile test/gulpfile.js"
   },
   "dependencies": {
-    "app-root-dir": "^1.0.2",
     "gulp-util": "latest",
-    "md5-file": "^3.1.1",
     "rework": "~1.0.1",
     "rework-plugin-url": "~1.0.1",
-    "through2": "~1.0.0"
+    "through2": "~1.0.0",
+    "url-twister": "^1.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",

@@ -2175,6 +2175,13 @@ urix@^0.1.0, urix@~0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/urix/-/urix-0.1.0.tgz#da937f7a62e21fec1fd18d49b35c2935067a6c72"
 
+url-twister@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/url-twister/-/url-twister-1.0.0.tgz#f033605a3ec4271cbc987396613a0351940f0171"
+  dependencies:
+    app-root-dir "^1.0.2"
+    md5-file "^3.1.1"
+
 user-home@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/user-home/-/user-home-1.1.1.tgz#2b5be23a32b63a7c9deb8d0f28d485724a3df190"
